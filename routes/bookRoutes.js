@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const { clearKey } = require("../services/cache");
 const Book = mongoose.model("Book");
 
-module.exports = app => {
+module.exports = (app) => {
   app.get("/api/books", async (req, res) => {
     let books;
     if (req.query.author) {
       books = await Book.find({ author: req.query.author }).cache();
     } else {
       books = await Book.find().cache({
-        time: 10
+        time: 10,
       });
     }
 
@@ -22,7 +22,7 @@ module.exports = app => {
     const book = new Book({
       title,
       content,
-      author
+      author,
     });
 
     try {

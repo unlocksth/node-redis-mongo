@@ -2,10 +2,19 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const bookSchema = new Schema({
-  title: String,
-  content: String,
-  createdAt: { type: Date, default: Date.now },
-  author: String
+  title: {
+    type: String,
+  },
+  content: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  author: {
+    type: String,
+  },
 });
 
 mongoose.model("Book", bookSchema);
